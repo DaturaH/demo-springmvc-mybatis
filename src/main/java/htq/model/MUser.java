@@ -11,6 +11,12 @@ public class MUser {
 
     private String password;
     
+	private String question;
+    
+    private String reallyName ;
+    
+    private String result;
+    
     public String getId() {
         return id;
     }
@@ -50,4 +56,29 @@ public class MUser {
     public void setPassword(String password){
     	this.password = password == null ? null : password.trim();
     }
+    
+    public String getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(String question) {
+		this.question = question == null ? null : question.trim();
+	}
+
+	public String getReallyName() {
+		return reallyName;
+	}
+
+	public void setReallyName(String reallyName) {
+		this.reallyName = reallyName == null ? null : reallyName.trim();
+	}
+
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result == null ? null : result.trim();
+	}
+
 }

@@ -51,6 +51,12 @@ public class MUserServiceImpl implements MUserServiceI{
 		
 		return muserMapper.selectByPrimaryKey(id);
 	}
+	
+	@Override
+	public MUser findByName(String name) {
+		
+		return muserMapper.findByName(name);
+	}
 
 }
 

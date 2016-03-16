@@ -21,6 +21,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			<td>Password</td>
    			<td>Address</td>
    			<td>Age</td>
+   			<td>question</td>
+   			<td>reallyName</td>
+   			<td>result</td>
    			<td>Delete</td>
    			<td>Update</td>
    		</tr>
@@ -31,6 +34,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			<td>${user.password }</td>
    			<td>${user.address }</td>
    			<td>${user.age }</td>
+   			<td>${user.question }</td>
+   			<td>${user.reallyName }</td>
+   	     	<td>${user.result }</td>
    			<td><a href="<%=path %>/muserController/deleteUser.do?id=${user.id }">Delete</a></td>
    			<td><a href="<%=path %>/muserController/updateUserUI.do?id=${user.id }">Update</a></td>
    		</tr>

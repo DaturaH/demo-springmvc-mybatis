@@ -16,4 +16,6 @@ public interface MUserServiceI {
     int update(MUser muser);
     
     int delete(String id);
+    
+    MUser findByName(String name);
 }

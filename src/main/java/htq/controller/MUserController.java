@@ -19,6 +19,8 @@ import htq.service.MUserServiceI;
 @RequestMapping("/muserController")
 public class MUserController {
     
+	private static int failedcount = 0;
+
 	@Resource
 	private MUserServiceI muserService;
 
@@ -64,6 +66,22 @@ public class MUserController {
 	
 	@RequestMapping(value="/userLogin")
 	public String userLogin(MUser muser){
-		return null;
+		MUser umuser = muserService.findByName(muser.getName());
+		if(umuser.getName().equals(muser.getName())){
+			if(!umuser.getPassword().equals(muser.getPassword())){
+				if(failedcount == 3){
+					System.out.println("sorry! 密码不正确！登录错误次数已经3次，请于10分钟后再尝试登录。");
+				}else{
+					failedcount++;
+					System.out.println("sorry! 密码不正确！");
+				}
+				return "userLogin";
+			}else{
+				return "redirect:/muserController/listUser.do";
+			}
+		}else{
+			System.out.println("用户不存在");
+			return "userLogin";
+		}
 	}
 }

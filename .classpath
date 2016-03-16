@@ -30,5 +30,7 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/s2m/WebContent/WEB-INF/lib/xwork-core-2.3.24.jar"/>
+	<classpathentry kind="lib" path="/s2m/WebContent/WEB-INF/lib/freemarker-2.3.22.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

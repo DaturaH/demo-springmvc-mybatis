@@ -21,4 +21,6 @@ public interface MUserMapper {
     
     List<MUser> getAll();
 
+	MUser findByName(String name);
+
 }
