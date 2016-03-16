@@ -1,8 +1,9 @@
-package rml.service;
+package htq.service;
+
 
 import java.util.List;
 
-import rml.model.MUser;
+import htq.model.MUser;
 
 public interface MUserServiceI {
 

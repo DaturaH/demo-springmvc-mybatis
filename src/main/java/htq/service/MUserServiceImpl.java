@@ -1,12 +1,12 @@
-package rml.service;
+package htq.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import rml.dao.MUserMapper;
-import rml.model.MUser;
+import htq.dao.MUserMapper;
+import htq.model.MUser;
 
 @Service("muserService")
 public class MUserServiceImpl implements MUserServiceI{

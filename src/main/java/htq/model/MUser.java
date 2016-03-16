@@ -1,4 +1,4 @@
-package rml.model;
+package htq.model;
 
 public class MUser {
     private String id;

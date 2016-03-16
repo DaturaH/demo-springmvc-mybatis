@@ -1,8 +1,9 @@
-package rml.dao;
+package htq.dao;
+
 
 import java.util.List;
 
-import rml.model.MUser;
+import htq.model.MUser;
 
 
 public interface MUserMapper {

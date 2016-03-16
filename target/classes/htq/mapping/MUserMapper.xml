@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="rml.dao.MUserMapper" >
-  <resultMap id="BaseResultMap" type="rml.model.MUser" >
+<mapper namespace="htq.dao.MUserMapper" >
+  <resultMap id="BaseResultMap" type="htq.model.MUser" >
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="age" property="age" jdbcType="INTEGER" />
@@ -20,13 +20,13 @@
     delete from muser
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="rml.model.MUser" >
+  <insert id="insert" parameterType="htq.model.MUser" >
     insert into muser (id, name, age, 
       address)
     values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, 
       #{address,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="rml.model.MUser" >
+  <insert id="insertSelective" parameterType="htq.model.MUser" >
     insert into muser
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -57,7 +57,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="rml.model.MUser" >
+  <update id="updateByPrimaryKeySelective" parameterType="htq.model.MUser" >
     update muser
     <set >
       <if test="name != null" >
@@ -72,7 +72,7 @@
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="rml.model.MUser" >
+  <update id="updateByPrimaryKey" parameterType="htq.model.MUser" >
     update muser
     set name = #{name,jdbcType=VARCHAR},
       age = #{age,jdbcType=INTEGER},

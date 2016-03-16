@@ -28,14 +28,14 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 	</bean>
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="mapperLocations" value="classpath:rml/mapping/*.xml" />
+		<property name="mapperLocations" value="classpath:htq/mapping/*.xml" />
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="rml.dao" />
+		<property name="basePackage" value="htq.dao" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
 		
-	<context:component-scan base-package="rml.service" />
+	<context:component-scan base-package="htq.service" />
 	
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
@@ -64,7 +64,7 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 		</tx:attributes>
 	</tx:advice>
 	<aop:config>
-		<aop:pointcut id="transactionPointcut" expression="execution(* rml.service..*Impl.*(..))" />
+		<aop:pointcut id="transactionPointcut" expression="execution(* htq.service..*Impl.*(..))" />
 		<aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionAdvice" />
 	</aop:config>
 

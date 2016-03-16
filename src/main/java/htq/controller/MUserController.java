@@ -1,4 +1,5 @@
-package rml.controller;
+package htq.controller;
+
 
 import java.util.List;
 import java.util.UUID;
@@ -11,8 +12,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import rml.model.MUser;
-import rml.service.MUserServiceI;
+import htq.model.MUser;
+import htq.service.MUserServiceI;
 
 @Controller
 @RequestMapping("/muserController")
