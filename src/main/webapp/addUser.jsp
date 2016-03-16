@@ -17,12 +17,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td><input type="text" name="name"></td>
 				</tr>
 				<tr>
-					<td>age:</td>
-					<td><input type="text" name="age"></td>
+					<td>password:</td>
+					<td><input type="text" name="password"></td>
 				</tr>
 				<tr>
 					<td>address:</td>
 					<td><input type="text" name="address"></td>
+				</tr>
+				<tr>
+					<td>age:</td>
+					<td><input type="text" name="age"></td>
 				</tr>
 				<tr>
 					<td>

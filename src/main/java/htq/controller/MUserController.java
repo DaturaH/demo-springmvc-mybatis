@@ -61,4 +61,9 @@ public class MUserController {
 		muserService.update(muser);
 		return "redirect:/muserController/listUser.do";
 	}
+	
+	@RequestMapping(value="/userLogin")
+	public String userLogin(MUser muser){
+		return null;
+	}
 }

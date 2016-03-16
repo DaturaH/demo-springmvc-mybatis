@@ -23,10 +23,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</tr>
 				<tr>
 					<td>
-						age:
+						password:
 					</td>
 					<td>
-						<input type="text" name="age" value="${user.age }">
+						<input type="text" name="password" value="${user.password }">
 					</td>
 				</tr>
 				<tr>
@@ -35,6 +35,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</td>
 					<td>
 						<input type="text" name="address" value="${user.address }">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						age:
+					</td>
+					<td>
+						<input type="text" name="age" value="${user.age }">
 					</td>
 				</tr>
 				<tr>

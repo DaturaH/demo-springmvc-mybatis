@@ -4,11 +4,12 @@
   <resultMap id="BaseResultMap" type="htq.model.MUser" >
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="age" property="age" jdbcType="INTEGER" />    
   </resultMap>
   <sql id="Base_Column_List" >
-    id, name, age, address
+    id, name, password, address ,age
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -21,10 +22,10 @@
     where id = #{id,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="htq.model.MUser" >
-    insert into muser (id, name, age, 
-      address)
-    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, 
-      #{address,jdbcType=VARCHAR})
+    insert into muser (id, name, password, 
+      address , age)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="htq.model.MUser" >
     insert into muser
@@ -35,11 +36,14 @@
       <if test="name != null" >
         name,
       </if>
-      <if test="age != null" >
-        age,
+      <if test="password != null" >
+        password,
       </if>
       <if test="address != null" >
         address,
+       </if>
+      <if test="age != null" >
+        age,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -49,11 +53,14 @@
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="age != null" >
-        #{age,jdbcType=INTEGER},
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
       </if>
       <if test="address != null" >
         #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -63,11 +70,14 @@
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="age != null" >
-        age = #{age,jdbcType=INTEGER},
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
       </if>
       <if test="address != null" >
         address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
@@ -75,11 +85,13 @@
   <update id="updateByPrimaryKey" parameterType="htq.model.MUser" >
     update muser
     set name = #{name,jdbcType=VARCHAR},
-      age = #{age,jdbcType=INTEGER},
-      address = #{address,jdbcType=VARCHAR}
+      password = #{password,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER}
+      
     where id = #{id,jdbcType=VARCHAR}
   </update>
     <select id="getAll" resultMap="BaseResultMap">
-	select id, name, age, address from muser
+	select id, name, password, address, age from muser
   </select>
 </mapper>
