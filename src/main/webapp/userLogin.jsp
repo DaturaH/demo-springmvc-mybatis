@@ -26,6 +26,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					<input type = "reset" value = "Reset">
 				</td>
 			</tr>
+		    <tr>
+				<td>
+					<a href="<%=path %>/memberRegister.jsp">注册新用户</a><br/>
+				</td>
+				<td>
+					<a href="<%=path %>/memberRegister.jsp">忘记密码？</a><br/>
+				</td>
+			</tr>
 		</table>
 	</form>
 </html>

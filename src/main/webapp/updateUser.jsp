@@ -31,6 +31,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</tr>
 				<tr>
 					<td>
+						reallyName:
+					</td>
+					<td>
+						<input type="text" name="reallyName" value="${user.reallyName }">
+					</td>
+				</tr>
+				<tr>
+					<td>
 						address:
 					</td>
 					<td>
@@ -50,17 +58,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						question:
 					</td>
 					<td>
-						<input type="text" name="question" value="${user.question }">
+						${user.question }
 					</td>
 				</tr>
-				<tr>
-					<td>
-						reallyName:
-					</td>
-					<td>
-						<input type="text" name="reallyName" value="${user.reallyName }">
-					</td>
-				</tr>
+
 				<tr>
 					<td>
 						result:

@@ -1,8 +1,12 @@
-<%@ page contentType="text/html; charset=gb2312" %>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>»áÔ±×¢²á</title>
+<title>ä¼šå‘˜æ³¨å†Œ</title>
 <style type="text/css">
 <!--
 .style1 {color: #FF0000}
@@ -17,48 +21,42 @@ function SelectSubmit(){
 	return true;
 }
 function submit1(){
-	if(document.all.username.value.length==0){
-	alert("ÇëÌîĞ´ÓÃ»§Ãû!");
+	if(document.all.name.value.length==0){
+	alert("è¯·å¡«å†™ç”¨æˆ·å!");
 		return false;
 	}
-	if(document.all.realname.value.length==0){
-		alert("ÇëÌîĞ´ÕæÊµĞÕÃû!");
+	if(document.all.name.value.length==0){
+		alert("è¯·å¡«å†™çœŸå®å§“å!");
 		return false;
 	}
-	if(document.all.password1.value.length==0){
-		alert("ÇëÌîĞ´ÃÜÂë!");
+	if(document.all.password.value.length==0){
+		alert("è¯·å¡«å†™å¯†ç !");
 		return false;
 	}
 	if(document.all.password2.value.length==0){
-		alert("ÇëÌîĞ´ÃÜÂë!");
+		alert("è¯·å¡«å†™å¯†ç !");
 		return false;
 	}
 
-	if(document.all.email.value.length==0){
-		alert("ÇëÌîĞ´µç×ÓÓÊ¼ş!");
-		return false;
-	}
 	if(document.all.question.value.length==0){
-		alert("ÇëÑ¡ÔñÎÊÌâ!");
+		alert("è¯·é€‰æ‹©é—®é¢˜!");
 		return false;
 	}
 	if(document.all.result.value.length==0){
-		alert("ÇëÌîĞ´ÎÊÌâ´ğ°¸!");
+		alert("è¯·å¡«å†™é—®é¢˜ç­”æ¡ˆ!");
 		return false;
 	}
-	if(document.all.password1.value!=document.all.password2.value){
-		alert("Á½´ÎÃÜÂëÊäÈë²»Ïà·û£¡");
+	if(document.all.password.value!=document.all.password2.value){
+		alert("ä¸¤æ¬¡å¯†ç è¾“å…¥ä¸ç›¸ç¬¦ï¼");
 		return false;
-	}
-	if(!checkemail(registerForm.email.value)){
-		alert("ÄúÊäÈëEmailµØÖ·²»ÕıÈ·!");registerForm.email.focus();return false;
 	}
 
-	 //ÔÚJavaScriptÖĞ£¬ÕıÔò±í´ïÊ½Ö»ÄÜÊ¹ÓÃ"/"¿ªÍ·ºÍ½áÊø£¬²»ÄÜÊ¹ÓÃË«ÒıºÅ
+
+	 //åœ¨JavaScriptä¸­ï¼Œæ­£åˆ™è¡¨è¾¾å¼åªèƒ½ä½¿ç”¨"/"å¼€å¤´å’Œç»“æŸï¼Œä¸èƒ½ä½¿ç”¨åŒå¼•å·
 	var Expression=/[^\u4E00-\u9FA5]/; 
 	var objExp=new RegExp(Expression);
 	if(objExp.test(registerForm.username.value)!=true){
-		alert("ÓÃ»§ÃûÖ»¿ÉÒÔÊÇÓ¢ÎÄÃû³Æ!");
+		alert("ç”¨æˆ·ååªå¯ä»¥æ˜¯è‹±æ–‡åç§°!");
 		return false;
 	}
 	
@@ -80,12 +78,12 @@ function checkemail(email){
 function reset(){
 	document.all.registerForm.reset();
 }
-function checkusername(){//ÓÃÓÚÌí¼Ó¡°¼ì²é°´Å¥¡±µÄJavascript
-	 //ÔÚJavaScriptÖĞ£¬ÕıÔò±í´ïÊ½Ö»ÄÜÊ¹ÓÃ"/"¿ªÍ·ºÍ½áÊø£¬²»ÄÜÊ¹ÓÃË«ÒıºÅ
+function checkusername(){//ç”¨äºæ·»åŠ â€œæ£€æŸ¥æŒ‰é’®â€çš„Javascript
+	 //åœ¨JavaScriptä¸­ï¼Œæ­£åˆ™è¡¨è¾¾å¼åªèƒ½ä½¿ç”¨"/"å¼€å¤´å’Œç»“æŸï¼Œä¸èƒ½ä½¿ç”¨åŒå¼•å·
 	var Expression=/[^\u4E00-\u9FA5]/; 
 	var objExp=new RegExp(Expression);
 	if(objExp.test(registerForm.username.value)!=true){
-		alert("ÓÃ»§ÃûÖ»¿ÉÒÔÊÇÓ¢ÎÄÃû³Æ!");
+		alert("ç”¨æˆ·ååªå¯ä»¥æ˜¯è‹±æ–‡åç§°!");
 		return false;
 	}
 	else{
@@ -97,120 +95,88 @@ function checkusername(){//ÓÃÓÚÌí¼Ó¡°¼ì²é°´Å¥¡±µÄJavascript
 
 //-->
 </script>
-<script language="javascript">
-function trigger(opt){
-//opt±íÊ¾ÏÖÓĞ¿ÉÑ¡ÏîµÄÊıÄ¿
-	registerForm.question.options[opt]=new Option(registerForm.question.options[opt]?
-	registerForm.question.options[opt].innerText+String.fromCharCode(event.keyCode):
-	String.fromCharCode(event.keyCode))
-	registerForm.question.selectedIndex=opt;  //ÉèÖÃÏÂÀ­ÁĞ±íµÄÑ¡ÖĞÏî
-}
-</script>
-<script language="javascript">
-function edit(opt){
-//opt±íÊ¾ÏÖÓĞ¿ÉÑ¡ÏîµÄÊıÄ¿
-	if(registerForm.question.options[opt]){
-		if(event.keyCode==8){
-			var str=registerForm.question.options[opt].innerText;
-			var len=str.length;		registerForm.question.options[opt].innerText=str.substring(0,len-1);
-			if(registerForm.question.options[opt].innerText==""){
-				registerForm.question.remove(opt);
-				registerForm.question.selectedIndex=1;
-			};
-		}
-		if(event.keyCode==32){
-			registerForm.question.options[opt].innerText+=" ";
-		}
-	}
-}
-</script>
-
 </head>
 
 
 <body>
 <div align="center">
-  <p class="blue"><strong>»áÔ±×¢²á
+  <p class="blue"><strong>ä¼šå‘˜æ³¨å†Œ
   </strong></p>
-  <form name="registerForm" method="post" action="../memberAction.do?action=0">
-    <table width="298"  border="1" cellspacing="0" cellpadding="0" bordercolor="#FFFFFF" bordercolordark="#819BBC" bordercolorlight="#FFFFFF">
+  <form action="<%=path %>/muserController/addUser.do" onsubmit="return submit1()" method="POST">  
+	<table>
       <tr>
         <td width="105" height="35" bgcolor="#EFF6FE">
-        <div align="center">»áÔ±Ãû³Æ</div></td>
+        <div align="center">ä¼šå‘˜åç§°</div></td>
         <td width="187"><div align="center">
-          <input type="text" name="username">
+          <input type="text" name="name">
           <span class="style1">*</span></div></td>
       </tr>
       <tr>
         <td height="35" bgcolor="#EFF6FE">
-        <div align="center">»áÔ±ÃÜÂë</div></td>
+        <div align="center">ä¼šå‘˜å¯†ç </div></td>
         <td><div align="center">
-          <input type="password" name="password1">
+          <input type="password" name="password">
           <span class="style1">*</span></div></td>
       </tr>
       <tr>
         <td height="35" bgcolor="#EFF6FE">
-        <div align="center">ÃÜÂëÈ·ÈÏ</div></td>
+        <div align="center">å¯†ç ç¡®è®¤</div></td>
         <td><div align="center">
           <input type="password" name="password2">
           <span class="style1">*</span></div></td>
       </tr>
       <tr>
         <td height="35" bgcolor="#EFF6FE">
-        <div align="center">ÕæÊµĞÕÃû</div></td>
+        <div align="center">çœŸå®å§“å</div></td>
         <td><div align="center">
-          <input type="text" name="realname">
+          <input type="text" name="reallyName">
           <span class="style1">*</span></div></td>
       </tr>
       <tr>
         <td height="35" bgcolor="#EFF6FE">
-        <div align="center">ÄêÁä</div></td>
+        <div align="center">åœ°å€</div></td>
+        <td><div align="center">
+          <input type="text" name="address">
+          <span class="style1">*</span></div></td>
+      </tr>
+      <tr>
+        <td height="35" bgcolor="#EFF6FE">
+        <div align="center">å¹´é¾„</div></td>
         <td><div align="center">
           <input type="text" name="age" value="18">
           <span class="style2">*</span></div></td>
       </tr>
       <tr>
         <td height="35" bgcolor="#EFF6FE">
-        <div align="center">Ö°Òµ</div></td>
-        <td><div align="center">
-          <input type="text" name="profession" value="Ñ§Éú">
-          <span class="style2">*</span></div></td>
-      </tr>
-      <tr>
-        <td height="35" bgcolor="#EFF6FE">
-        <div align="center">EmailµØÖ·</div></td>
-        <td><div align="center">
-          <input name="email" type="text" >
-          <span class="style1">*</span></div></td>
-      </tr>
-      <tr>
-        <td height="35" bgcolor="#EFF6FE">
-        <div align="center">ÕÒ»ØÃÜÂëÎÊÌâ</div></td>
+        <div align="center">æ‰¾å›å¯†ç é—®é¢˜</div></td>
         <td><div align="center">
           <select id="question" onkeypress="trigger(3)" onkeyup="edit(3)" name="question">
-		  <option value="1+1=£¿">1+1=</option>
-		  <option value="ÎÒµÄ°®ºÃÊÇÊ²Ã´£¿">ÎÒµÄ°®ºÃÊÇÊ²Ã´£¿</option>
-		  <option value="ÎÒĞÕÊ²Ã´£¿">ÎÒµÄ°®ºÃÊÇÊ²Ã´£¿</option>
+		  <option value="1+1=ï¼Ÿ">1+1=</option>
+		  <option value="æˆ‘çš„çˆ±å¥½æ˜¯ä»€ä¹ˆï¼Ÿ">æˆ‘çš„çˆ±å¥½æ˜¯ä»€ä¹ˆï¼Ÿ</option>
+		  <option value="æˆ‘å§“ä»€ä¹ˆï¼Ÿ">æˆ‘çš„çˆ±å¥½æ˜¯ä»€ä¹ˆï¼Ÿ</option>
           </select>
           <span class="style1">*</span></div></td>
       </tr>
       <tr>
         <td height="35" bgcolor="#EFF6FE">
-        <div align="center">´ğ°¸</div></td>
+        <div align="center">ç­”æ¡ˆ</div></td>
         <td><div align="center">
           <input type="text" name="result">
           <span class="style1">*</span></div></td>
       </tr>
+
+	  <tr>
+      	<td>
+		    <input type="submit" value="Save" onClick="return submit1();">
+	    </td>
+        <td>
+		    <input type="reset" value="Reset">
+	    </td>
+	  </tr>
     </table>
-    <p><span class="style1">*</span>£º<span class="blue">´ú±í±ØÌíÏîÄ¿</span>
-    *£º<span class="blue">´ú±í·Ç±ØÌíÏîÄ¿</span></p>
-    <p>
-        <input type="button" name="Submit2" value="Ìá½»"  onClick="return submit1();">
-&nbsp;&nbsp;
-        <input type="reset" name="Submit3" value="ÖØÖÃ">
-    </p>
-        </p>
-  </form>
+   <p><span class="style1">*</span>ï¼š<span class="blue">ä»£è¡¨å¿…æ·»é¡¹ç›®</span>
+    *ï¼š<span class="blue">ä»£è¡¨éå¿…æ·»é¡¹ç›®</span></p>
+    </form>
   <p>&nbsp;  </p>
 </div>
 </body>
