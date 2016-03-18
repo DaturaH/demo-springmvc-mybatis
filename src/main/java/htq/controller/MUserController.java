@@ -67,6 +67,7 @@ public class MUserController {
 	@RequestMapping(value="/userLogin")
 	public String userLogin(MUser muser){
 		MUser umuser = muserService.findByName(muser.getName());
+		System.out.println(umuser.getName());
 		if(umuser.getName().equals(muser.getName())){
 			if(!umuser.getPassword().equals(muser.getPassword())){
 				if(failedcount == 3){
@@ -83,5 +84,37 @@ public class MUserController {
 			System.out.println("用户不存在");
 			return "userLogin";
 		}
+	}
+	
+	@RequestMapping(value="/findTwo")
+	public String findTwo(String name , HttpServletRequest request){
+		MUser muser = muserService.findByName(name);
+
+	    if( muser == null || muser.equals("")){
+	    	System.out.println("不存在此会员名称,请重新输入！！");
+	    	return "findOne";
+	    }
+
+		request.setAttribute("user" , muser);
+		return "findTwo";
+	}
+	
+	@RequestMapping(value="/findThree")
+	public String findThree(String name , String result , HttpServletRequest request){
+		MUser muser = muserService.findByName(name);
+	    if( muser.getResult() == null || !muser.getResult().equals(result)){
+	    	System.out.println("答案不正确,请重新输入！！");
+	    	return "findTwo";
+	    }
+		request.setAttribute("user" , muser);
+		return "findThree";
+	}
+	
+	@RequestMapping(value="/findFour")
+	public String findFour(String name , String password){
+		MUser muser = muserService.findByName(name);
+		muser.setPassword(password);
+		muserService.update(muser);
+		return "findFour";
 	}
 }

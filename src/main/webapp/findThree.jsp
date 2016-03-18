@@ -1,64 +1,55 @@
-<%@ page contentType="text/html; charset=gb2312" %>
-<%@page import="com.domain.MemberForm"%>
-<%@page import="com.tool.Chinese"%>
-<jsp:useBean id="dao" scope="page" class="com.dao.MemberDao"/>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
-String name=Chinese.chinese(request.getParameter("name")).trim();
-String result=Chinese.chinese(request.getParameter("result")).trim();
-MemberForm form=dao.selectFind(name,result);
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>ÕÒ»ØÃÜÂë²½ÖèÈý</title>
+<title>æ‰¾å›žå¯†ç æ­¥éª¤ä¸‰</title>
 </head>
- <link href="../css/css1.css" rel="stylesheet" type="text/css">
-<script language="javascript">
+<script type ="text/javascript">
 function checkEmpty(form){
 for(i=0;i<form.length;i++){
 if(form.elements[i].value==""){
-alert("±íµ¥ÐÅÏ¢²»ÄÜÎª¿Õ");
+alert("è¡¨å•ä¿¡æ¯ä¸èƒ½ä¸ºç©º");
 return false;
 }
 }
 if(document.form.password.value!=document.form.passwordOne.value){
-window.alert("ÄúÁ½´ÎÊäÈëµÄÃÜÂë²»Ò»ÖÂ£¬ÇëÖØÐÂÊäÈë");
+window.alert("æ‚¨ä¸¤æ¬¡è¾“å…¥çš„å¯†ç ä¸ä¸€è‡´ï¼Œè¯·é‡æ–°è¾“å…¥");
 return false;
 }
 }
 </script>
 <body>
 <div align="center">
-  <%if(form==null||form.equals("")){%>
- <p><strong>´ð°¸²»ÕýÈ·,ÇëÖØÐÂÊäÈë£¡£¡£¡</strong></p>
- <meta http-equiv="refresh" content="3;URL=findTwo.jsp?name=<%=name%>">
-  <%}else{%>
-  <p class="blue"><strong>ÊäÈëÐÂÃÜÂë</strong></p>
-  <form name="form" method="post" action="findFour.jsp?id=<%=form.getId()%>" onSubmit="return checkEmpty(form)">
-    <table width="298"  border="1" cellspacing="0" cellpadding="0" bordercolor="#FFFFFF" bordercolordark="#819BBC" bordercolorlight="#FFFFFF">
+  <p class="blue"><strong>è¾“å…¥æ–°å¯†ç </strong></p>
+  <form name="form" method="post" action="<%=path %>/muserController/findFour.do" onSubmit="return checkEmpty(form)">
+	<table>
       <tr>
         <td width="105" height="35" bgcolor="#EFF6FE">
-        <div align="center">ÇëÊäÈëÐÂµÄÃÜÂë</div></td>
+        <input type="hidden" name="name" value="${user.name }">
+        <div align="center">è¯·è¾“å…¥æ–°çš„å¯†ç </div></td>
         <td width="187"><div align="center">
           <input type="password" name="password">
         </div></td>
       </tr>
        <tr>
         <td width="105" height="35" bgcolor="#EFF6FE">
-        <div align="center">È·ÈÏÃÜÂë</div></td>
+        <div align="center">ç¡®è®¤å¯†ç </div></td>
         <td width="187"><div align="center">
                  <input type="password" name="passwordOne">
         </div></td>
       </tr>
     </table>
     <br>
-    <input type="submit" name="Submit2" value="Ìá½»">&nbsp;&nbsp;
-    <input type="reset" name="Submit3" value="ÖØÖÃ">
+    <input type="submit" name="Submit2" value="æäº¤">&nbsp;&nbsp;
+    <input type="reset" name="Submit3" value="é‡ç½®">
     &nbsp;&nbsp;
-	<input type="button" name="Submit4" value="·µ»Ø" onClick="javascript:history.go(-1)">
+	<input type="button" name="Submit4" value="è¿”å›ž" onClick="javascript:history.go(-1)">
   </form>
-<%}%>
-
 </div>
 </body>
 </html>

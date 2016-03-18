@@ -1,15 +1,18 @@
-<%@ page contentType="text/html; charset=gb2312" %>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>找回密码步骤一</title>
+<title>鎵惧洖瀵嗙爜姝ラ涓�</title>
 </head>
- <link href="../css/css1.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 function checkEmpty(form){
 for(i=0;i<form.length;i++){
 if(form.elements[i].value==""){
-alert("表单信息不能为空");
+alert("琛ㄥ崟淇℃伅涓嶈兘涓虹┖");
 return false;
 }
 }
@@ -19,12 +22,12 @@ return false;
 <body>
 <div align="center">
   <p class="bgcolor">&nbsp;</p>
-  <p class="bgcolor"><strong>输入会员账号</strong></p>
-  <form name="form" method="post" action="findTwo.jsp" onSubmit="return checkEmpty(this)">
-	<table>
+  <p class="bgcolor"><strong>杈撳叆浼氬憳璐﹀彿</strong></p>
+  <form name = "form" action="<%=path %>/muserController/findTwo.do" method="POST" onSubmit="return checkEmpty(this)">
+  	<table>
       <tr>
         <td width="105" height="35" bgcolor="#EFF6FE">
-        <div align="center">会员账号</div></td>
+        <div align="center">浼氬憳璐﹀彿</div></td>
         <td width="187"><div align="center">
           <input type="text" name="name">
         </div></td>
@@ -32,11 +35,11 @@ return false;
 
     </table>
     <br>
-    <input type="submit" name="Submit2" value="提交">
+    <input type="submit" name="Submit2" value="鎻愪氦">
     &nbsp;&nbsp;
-    <input type="reset" name="Submit3" value="重置">
+    <input type="reset" name="Submit3" value="閲嶇疆">
     &nbsp;&nbsp;
-    <input type="button" name="Submit4" value="关闭" onClick="javascript:window.close();">
+    <input type="button" name="Submit4" value="鍏抽棴" onClick="javascript:window.close();">
   </form>
   <p>&nbsp;  </p>
 </div>

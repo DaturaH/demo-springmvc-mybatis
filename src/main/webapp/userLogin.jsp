@@ -31,7 +31,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					<a href="<%=path %>/memberRegister.jsp">注册新用户</a><br/>
 				</td>
 				<td>
-					<a href="<%=path %>/memberRegister.jsp">忘记密码？</a><br/>
+					<a href="<%=path %>/findOne.jsp">忘记密码？</a><br/>
 				</td>
 			</tr>
 		</table>
