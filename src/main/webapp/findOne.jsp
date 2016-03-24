@@ -5,25 +5,47 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="http://www.w3school.com.cn/jquery/jquery-1.11.1.min.js"></script>
+<script>
+$(document).ready(function(){
+	$('#Submit2').click(function() {
+		if(document.all.name.value.length == 0){
+			alert("姓名不能为空～");
+			return false;
+		}
+		//alert(name);
+		var name = document.all.name.value;
+		//alert(name);
+
+		$.ajax({
+			type: "POST",
+			url: "http://localhost:8080/zmarket/muserController/findTwo.do",
+			data: "name=" + name,
+	        dataType:"json",
+			success : function(data) {
+			   	if(data.note == "error"){
+			   		alert("不存在此会员名称,请重新输入！");
+		 		}else if(data.note == "success"){
+		 			window.location.href="findTwo.jsp"; 
+	  			}else{
+	  				alert("系统错误！");
+	  			}				
+			}, error: function(XMLHttpRequest, textStatus, errorThrown) {
+	            alert(textStatus);
+	      }
+		});  
+
+	});
+});
+</script>
 <title>找回密码步骤一</title>
 </head>
-<script type="text/javascript">
-function checkEmpty(form){
-for(i=0;i<form.length;i++){
-if(form.elements[i].value==""){
-alert("表单信息不能为空");
-return false;
-}
-}
 
-}
-</script>
 <body>
 <div align="center">
   <p class="bgcolor">&nbsp;</p>
   <p class="bgcolor"><strong>输入会员账号</strong></p>
-  <form name = "form" action="<%=path %>/muserController/findTwo.do" method="POST" onSubmit="return checkEmpty(this)">
+  <form name = "form" method="POST">
   	<table>
       <tr>
         <td width="105" height="35" bgcolor="#EFF6FE">
@@ -35,7 +57,7 @@ return false;
 
     </table>
     <br>
-    <input type="submit" name="Submit2" value="提交">
+    <input type="button" id="Submit2" value="提交">
     &nbsp;&nbsp;
     <input type="reset" name="Submit3" value="重置">
     &nbsp;&nbsp;

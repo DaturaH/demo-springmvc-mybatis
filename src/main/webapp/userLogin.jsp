@@ -3,14 +3,19 @@
 String path = request.getContextPath();
 String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
-<script src="http://www.w3school.com.cn/jquery/jquery-1.11.1.min.js"></script>
+
+
+<html>
+	<head>
+		<title>userLogin</title>
+		<script src="http://www.w3school.com.cn/jquery/jquery-1.11.1.min.js"></script>
 <script>
 
 $(document).ready(function(){
 
 
 	$('#login').click(function() {
-		  xmlhttp=new XMLHttpRequest();
+//		  xmlhttp=new XMLHttpRequest();
 
 		if(document.all.name.value.length == 0){
 			alert("姓名不能为空～");
@@ -56,10 +61,6 @@ $(document).ready(function(){
 
 
 </script>
-
-<html>
-	<head>
-		<title>userLogin</title>
 	</head>
 	<form  name="form"  method = "POST">
 		<table>

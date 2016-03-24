@@ -1,6 +1,7 @@
 package htq.controller;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,7 +9,9 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -86,8 +89,7 @@ public class MUserController {
 			System.out.println("用户不存在");
 			System.out.println(result);
 			return  result;			
-		}
-		
+		}		
 		if(!umuser.getPassword().equals(password)){
 			if(failedcount == 3){
 //				System.out.println("sorry! 密码不正确！登录错误次数已经3次，请于10分钟后再尝试登录。");
@@ -105,16 +107,23 @@ public class MUserController {
 	}
 
 	@RequestMapping(value="/findTwo")
-	public String findTwo(String name , HttpServletRequest request){
+	@ResponseBody
+	public Map<String , Object> findTwo(String name , HttpServletRequest request ,HttpServletResponse response) throws ServletException, IOException{
+		Map<String, Object> result = new HashMap<String , Object>();
+		result.put("note", "success");
 		MUser muser = muserService.findByName(name);
-
 	    if( muser == null || muser.equals("")){
 	    	System.out.println("不存在此会员名称,请重新输入！！");
-	    	return "findOne";
+	    //	return "findOne";
+	    	result.put("note" , "error");
+	    	
+	    }else{
+			request.setAttribute("user" , muser);
+			request.getRequestDispatcher("../findTwo.jsp").forward(request,response);
+			
+	    	result.put("note" , "success");
 	    }
-
-		request.setAttribute("user" , muser);
-		return "findTwo";
+		return result;
 	}
 	
 	@RequestMapping(value="/findThree")
