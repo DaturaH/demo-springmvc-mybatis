@@ -1,7 +1,10 @@
 package htq.controller;
 
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -10,9 +13,16 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.opensymphony.xwork2.util.logging.Logger;
+import com.opensymphony.xwork2.util.logging.LoggerFactory;
 
 import htq.model.MUser;
+import htq.model.UserModel;
 import htq.service.MUserServiceI;
 
 @Controller
@@ -63,29 +73,37 @@ public class MUserController {
 		muserService.update(muser);
 		return "redirect:/muserController/listUser.do";
 	}
-	
+
+
 	@RequestMapping(value="/userLogin")
-	public String userLogin(MUser muser){
-		MUser umuser = muserService.findByName(muser.getName());
-		System.out.println(umuser.getName());
-		if(umuser.getName().equals(muser.getName())){
-			if(!umuser.getPassword().equals(muser.getPassword())){
-				if(failedcount == 3){
-					System.out.println("sorry! 密码不正确！登录错误次数已经3次，请于10分钟后再尝试登录。");
-				}else{
-					failedcount++;
-					System.out.println("sorry! 密码不正确！");
-				}
-				return "userLogin";
-			}else{
-				return "redirect:/muserController/listUser.do";
-			}
-		}else{
+	@ResponseBody
+	public Map<String , String> userLogin(String name,String password){
+		Map<String , String> result = new HashMap<String , String>();
+		MUser umuser = muserService.findByName(name);
+		result.put("note", "success");
+		if( umuser == null || "".equals( umuser)){
+			result.put("note", "error2");
 			System.out.println("用户不存在");
-			return "userLogin";
+			System.out.println(result);
+			return  result;			
 		}
+		
+		if(!umuser.getPassword().equals(password)){
+			if(failedcount == 3){
+//				System.out.println("sorry! 密码不正确！登录错误次数已经3次，请于10分钟后再尝试登录。");
+				result.put("note", "error0");
+			}else{
+				failedcount++;
+//				System.out.println("sorry! 密码不正确！");
+				result.put("note", "error1");
+				}
+		}else{
+			result.put("note", "success");
+		}
+		System.out.println(result);
+		return result;
 	}
-	
+
 	@RequestMapping(value="/findTwo")
 	public String findTwo(String name , HttpServletRequest request){
 		MUser muser = muserService.findByName(name);
@@ -117,4 +135,7 @@ public class MUserController {
 		muserService.update(muser);
 		return "findFour";
 	}
+	
+  
+	  
 }

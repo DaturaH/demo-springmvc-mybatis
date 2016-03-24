@@ -14,7 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
   	<h3>UserList</h3>
   	<a href="<%=path %>/addUser.jsp">Add User</a><br/>
-	<table >
+	<table border="1" width="70%">
    		<tr>
    			<td>Id</td>
    			<td>Name</td>
