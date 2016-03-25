@@ -18,7 +18,7 @@ $(document).ready(function(){
 //		  xmlhttp=new XMLHttpRequest();
 
 		if(document.all.name.value.length == 0){
-			alert("姓名不能为空～");
+			alert("姓名不能为空～!");
 			return false;
 		}
 		if(document.all.password.value.length == 0){

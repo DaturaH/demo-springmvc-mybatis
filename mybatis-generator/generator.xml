@@ -15,20 +15,20 @@
 			<property name="forceBigDecimals" value="false" />
 		</javaTypeResolver>
 		<!-- model package and location -->
-		<javaModelGenerator targetPackage="rml.model" targetProject="src">
+		<javaModelGenerator targetPackage="htq.model" targetProject="src">
 			<property name="enableSubPackages" value="true" />
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
 		<!-- mapping package and location -->
-		<sqlMapGenerator targetPackage="rml.mapping" targetProject="src">
+		<sqlMapGenerator targetPackage="htq.mapping" targetProject="src">
 			<property name="enableSubPackages" value="true" />
 		</sqlMapGenerator>
 		<!-- dao package and location -->
-		<javaClientGenerator type="XMLMAPPER" targetPackage="rml.dao" targetProject="src">
+		<javaClientGenerator type="XMLMAPPER" targetPackage="htq.dao" targetProject="src">
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 		<!-- table name,  change tableName and domainObjectName  -->
-		<table tableName="muser" domainObjectName="MUser" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" />
+		<table tableName="GoodsForm" domainObjectName="GoodsForm" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" />
 		
 	</context>
 </generatorConfiguration>

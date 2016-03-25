@@ -8,6 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="http://www.w3school.com.cn/jquery/jquery-1.11.1.min.js"></script>
 <script>
 $(document).ready(function(){
+
 	$('#Submit2').click(function() {
 		if(document.all.name.value.length == 0){
 			alert("姓名不能为空～");
@@ -26,7 +27,10 @@ $(document).ready(function(){
 			   	if(data.note == "error"){
 			   		alert("不存在此会员名称,请重新输入！");
 		 		}else if(data.note == "success"){
-		 			window.location.href="findTwo.jsp"; 
+		 			//window.location.href="findTwo.jsp"; 
+		 			//form.submit();
+		 		    document.getElementById("myform").submit();    
+
 	  			}else{
 	  				alert("系统错误！");
 	  			}				
@@ -45,7 +49,7 @@ $(document).ready(function(){
 <div align="center">
   <p class="bgcolor">&nbsp;</p>
   <p class="bgcolor"><strong>输入会员账号</strong></p>
-  <form name = "form" method="POST">
+  <form name = "form" id = "myform" action = "<%=path %>/muserController/findTwo1.do" method="POST">
   	<table>
       <tr>
         <td width="105" height="35" bgcolor="#EFF6FE">

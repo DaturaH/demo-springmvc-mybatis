@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="htq.dao.GoodsFormMapper" >
+  <resultMap id="BaseResultMap" type="htq.model.GoodsForm" >
+    <result column="big" property="big" jdbcType="INTEGER" />
+    <result column="creaTime" property="creatime" jdbcType="VARCHAR" />
+    <result column="freePrice" property="freeprice" jdbcType="REAL" />
+    <result column="from1" property="from1" jdbcType="VARCHAR" />
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="introduce" property="introduce" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="nowPrice" property="nowprice" jdbcType="REAL" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="small" property="small" jdbcType="INTEGER" />
+    <result column="priture" property="priture" jdbcType="VARCHAR" />
+    <result column="mark" property="mark" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="htq.model.GoodsForm" >
+    insert into GoodsForm (big, creaTime, freePrice, 
+      from1, id, introduce, 
+      name, nowPrice, number, 
+      small, priture, mark
+      )
+    values (#{big,jdbcType=INTEGER}, #{creatime,jdbcType=VARCHAR}, #{freeprice,jdbcType=REAL}, 
+      #{from1,jdbcType=VARCHAR}, #{id,jdbcType=INTEGER}, #{introduce,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{nowprice,jdbcType=REAL}, #{number,jdbcType=INTEGER}, 
+      #{small,jdbcType=INTEGER}, #{priture,jdbcType=VARCHAR}, #{mark,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="htq.model.GoodsForm" >
+    insert into GoodsForm
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="big != null" >
+        big,
+      </if>
+      <if test="creatime != null" >
+        creaTime,
+      </if>
+      <if test="freeprice != null" >
+        freePrice,
+      </if>
+      <if test="from1 != null" >
+        from1,
+      </if>
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="introduce != null" >
+        introduce,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="nowprice != null" >
+        nowPrice,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="small != null" >
+        small,
+      </if>
+      <if test="priture != null" >
+        priture,
+      </if>
+      <if test="mark != null" >
+        mark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="big != null" >
+        #{big,jdbcType=INTEGER},
+      </if>
+      <if test="creatime != null" >
+        #{creatime,jdbcType=VARCHAR},
+      </if>
+      <if test="freeprice != null" >
+        #{freeprice,jdbcType=REAL},
+      </if>
+      <if test="from1 != null" >
+        #{from1,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="introduce != null" >
+        #{introduce,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nowprice != null" >
+        #{nowprice,jdbcType=REAL},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="small != null" >
+        #{small,jdbcType=INTEGER},
+      </if>
+      <if test="priture != null" >
+        #{priture,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null" >
+        #{mark,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -118,24 +118,47 @@ public class MUserController {
 	    	result.put("note" , "error");
 	    	
 	    }else{
-			request.setAttribute("user" , muser);
-			request.getRequestDispatcher("../findTwo.jsp").forward(request,response);
-			
+	//		request.setAttribute("user" , muser);
+	//		request.getRequestDispatcher("../findTwo.jsp").forward(request,response);			
 	    	result.put("note" , "success");
 	    }
 		return result;
 	}
 	
+	@RequestMapping(value="/findTwo1")
+	public String findTwo1(String name , HttpServletRequest request){
+		MUser muser = muserService.findByName(name);
+		request.setAttribute("user" , muser);
+		return "findTwo";
+	}
+	
 	@RequestMapping(value="/findThree")
-	public String findThree(String name , String result , HttpServletRequest request){
+	@ResponseBody
+	public Map<String , String> findThree(String name , String result , HttpServletRequest request){
+		Map<String, String> map = new HashMap<String ,String>();
 		MUser muser = muserService.findByName(name);
 	    if( muser.getResult() == null || !muser.getResult().equals(result)){
 	    	System.out.println("答案不正确,请重新输入！！");
-	    	return "findTwo";
+	    	map.put("note", "error");
+	    //	return "findTwo";
+	    }else{
+	    	map.put("note", "success");
 	    }
-		request.setAttribute("user" , muser);
+		//request.setAttribute("user" , muser);
+		//return "findThree";
+	   // System.out.println(map);
+	    System.out.println(map);
+
+	    return map;
+	}
+	
+	@RequestMapping(value="/findThree1")
+	public String findThree1(String name , HttpServletRequest request){
+		MUser muser = muserService.findByName(name);
+		request.setAttribute("user", muser);
 		return "findThree";
 	}
+
 	
 	@RequestMapping(value="/findFour")
 	public String findFour(String name , String password){

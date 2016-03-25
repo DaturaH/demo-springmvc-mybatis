@@ -22,7 +22,7 @@ setTimeout("self.close()",3000);
     密码修改成功！！！
 
   </strong></p>
-<!--meta http-equiv="refresh" content="3;URL=../index.jsp"-->
+<meta http-equiv="refresh" content="2;URL=../userLogin.jsp">
 
 </div>
 </body>
