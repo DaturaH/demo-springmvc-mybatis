@@ -25,7 +25,6 @@ import com.opensymphony.xwork2.util.logging.Logger;
 import com.opensymphony.xwork2.util.logging.LoggerFactory;
 
 import htq.model.MUser;
-import htq.model.UserModel;
 import htq.service.MUserServiceI;
 
 @Controller

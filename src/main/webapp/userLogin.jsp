@@ -1,4 +1,9 @@
 <%@ page language="java" import = "java.util.*" pageEncoding = "UTF-8" %>
+<%@ page import="org.springframework.web.context.support.WebApplicationContextUtils"%>
+<%@ page import="org.springframework.context.ApplicationContext"%>
+<%@ page import=" htq.service.*"%>
+<%@ page import=" htq.model.*"%>
+
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -12,7 +17,27 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <script>
 
 $(document).ready(function(){
+	$.ajax({
+		type: "POST",
+		url: "http://localhost:8080/zmarket/afficheController/listAffiche.do",
+        dataType:"json",
+		success : function(afficheList) {
+            for(var i = 0;i<afficheList.length;i++){
+                afficheForm = afficheList[i];
+              //  alert(afficheForm.id);
+                $("MARQUEE").append("<div>"+
+                "<h3>"+afficheForm.name+"</h3>"+
+                "<p>" +afficheForm.content+"</p>"+
+                "</div>");
+            }			
+		}, error: function(XMLHttpRequest, textStatus, errorThrown) {
+            alert(textStatus);
+      }
+	});  
 
+
+	
+	
 
 	$('#login').click(function() {
 //		  xmlhttp=new XMLHttpRequest();
@@ -57,11 +82,13 @@ $(document).ready(function(){
 
 	});
 });
-
-
-
 </script>
-	</head>
+<style type='text/css'>
+div{word-break:break-all; width:"1000000"}
+div p{word-break;:break-all;}
+</style>
+</head>
+	<body>
 	<form  name="form"  method = "POST">
 		<table>
 			<tr>
@@ -90,5 +117,21 @@ $(document).ready(function(){
 			</tr>
 		</table>
 	</form>
-	
+	<table>
+		<tr>
+            <td height="142" align="center" valign="top">
+            	<table >
+                	<tr>
+                  		<td height="43" background="image/shangchenggenggao.jpg">&nbsp;</td>
+                	</tr>
+                	<tr>
+                		<td height="166" width="190" valign="middle" >                    
+							<MARQUEE direction="up"  onmouseout="this.start()" onmouseover="this.stop()" scrollAmount="1" scrollDelay="1" class="linkBlack" behavior="scroll">	  
+		                </marquee>                				
+              		</tr>
+            	</table>						
+			</td>
+    	</tr>
+	</table>
+	</body>
 </html>

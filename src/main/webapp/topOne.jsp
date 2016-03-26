@@ -1,6 +1,9 @@
-<%@ page contentType="text/html; charset=gb2312" %>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@page import="java.sql.*"%>
-<%@page import="java.util.*"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 
 <link href="css/css.css" rel="stylesheet" type="text/css">
 <!--table width="755" height="106"  border="0" cellpadding="0" cellspacing="0"  background="image/banner.jpg"-->
@@ -30,7 +33,7 @@
   <area shape="rect" coords="695,67,744,83" href="sell_resultTen.jsp">
   <area shape="rect" coords="628,68,677,81" href="cart_detail.jsp">
   <%}%>
-  <area shape="rect" coords="504,11,554,23" href="mailto:tmoonbook@sina.com">
-  <area shape="rect" coords="601,9,652,24" href="javascript:window.external.AddFavorite('http://localhost/net','ÊñÓñµç×Ó¹ºÎïÉÌ³Ç')">
+  <area shape="rect" coords="504,11,554,23" href="794287925@qq.com">
+  <area shape="rect" coords="601,9,652,24" href="javascript:window.external.AddFavorite('http://localhost/net','èœ€çŽ‰ç”µå­è´­ç‰©å•†åŸŽ')">
   <area shape="rect" coords="701,9,749,23"  href="#" onclick="this.style.behavior='url(#default#homepage)';this.sethomepage('http://localhost/net')">
 </map>
